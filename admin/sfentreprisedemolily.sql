@@ -31,13 +31,14 @@ CREATE TABLE IF NOT EXISTS `employe` (
   PRIMARY KEY (`id`),
   KEY `IDX_F804D3B9A4AEAFEA` (`entreprise_id`),
   CONSTRAINT `FK_F804D3B9A4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sfentreprisedemolily.employe : ~3 rows (environ)
+-- Listage des données de la table sfentreprisedemolily.employe : ~0 rows (environ)
 REPLACE INTO `employe` (`id`, `entreprise_id`, `nom`, `prenom`, `date_naissance`, `date_embauche`, `ville`) VALUES
 	(1, 1, 'Ruffo', 'Yofer', '1990-01-14 14:26:25', '2024-10-21 14:26:29', NULL),
 	(2, 1, 'Murmann', 'Mickael', '1989-01-14 14:26:51', '2014-01-14 14:26:58', NULL),
-	(3, 2, 'Renau', 'Laury', '1988-03-14 14:27:52', '2023-01-14 14:27:59', NULL);
+	(3, 2, 'Renau', 'Laury', '1988-03-14 14:27:52', '2023-01-14 14:27:59', NULL),
+	(4, 1, 'Boenapfel', 'Damien', '1993-03-29 00:00:00', '2024-10-21 00:00:00', 'Strasbourg');
 
 -- Listage de la structure de table sfentreprisedemolily. entreprise
 CREATE TABLE IF NOT EXISTS `entreprise` (
@@ -48,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
   `cp` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ville` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table sfentreprisedemolily.entreprise : ~0 rows (environ)
 REPLACE INTO `entreprise` (`id`, `raison_sociale`, `date_creation`, `adresse`, `cp`, `ville`) VALUES
