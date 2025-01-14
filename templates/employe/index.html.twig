@@ -3,11 +3,16 @@
 {% block title %}Hello EmployeController!{% endblock %}
 
 {% block body %}
+
 <h1>Liste des employés</h1>
+
+<a href=" {{ path('new_employe')}}" class="btn btn-success">Ajouter un employé</a>
     
    
 {% for employe in employes %}    
-    <p><a href="{{ path('show_employe', {'id': employe.id} )}}">{{ employe }} </a>{{ employe.entreprise.raisonSociale }}</p>
+    <p><a href="{{ path('show_employe', {'id': employe.id} )}}">{{ employe }} </a></p>
+    <a class="btn btn-warning" href="{{ path('edit_employe', {'id' : employe.id}) }}">Edit</a>
+    <a class="btn btn-danger" href="{{ path('delete_employe', {'id' : employe.id}) }}">Supprimer</a>
 {% endfor %}
 
 {% endblock %}

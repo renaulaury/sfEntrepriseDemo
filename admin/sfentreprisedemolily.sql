@@ -19,18 +19,6 @@
 CREATE DATABASE IF NOT EXISTS `sfentreprisedemolily` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `sfentreprisedemolily`;
 
--- Listage de la structure de table sfentreprisedemolily. doctrine_migration_versions
-CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `executed_at` datetime DEFAULT NULL,
-  `execution_time` int DEFAULT NULL,
-  PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-
--- Listage des données de la table sfentreprisedemolily.doctrine_migration_versions : ~1 rows (environ)
-REPLACE INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-	('DoctrineMigrations\\Version20250114085858', '2025-01-14 08:59:55', 117);
-
 -- Listage de la structure de table sfentreprisedemolily. employe
 CREATE TABLE IF NOT EXISTS `employe` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -39,12 +27,17 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `prenom` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_naissance` datetime DEFAULT NULL,
   `date_embauche` datetime NOT NULL,
+  `ville` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F804D3B9A4AEAFEA` (`entreprise_id`),
   CONSTRAINT `FK_F804D3B9A4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sfentreprisedemolily.employe : ~0 rows (environ)
+-- Listage des données de la table sfentreprisedemolily.employe : ~3 rows (environ)
+REPLACE INTO `employe` (`id`, `entreprise_id`, `nom`, `prenom`, `date_naissance`, `date_embauche`, `ville`) VALUES
+	(1, 1, 'Ruffo', 'Yofer', '1990-01-14 14:26:25', '2024-10-21 14:26:29', NULL),
+	(2, 1, 'Murmann', 'Mickael', '1989-01-14 14:26:51', '2014-01-14 14:26:58', NULL),
+	(3, 2, 'Renau', 'Laury', '1988-03-14 14:27:52', '2023-01-14 14:27:59', NULL);
 
 -- Listage de la structure de table sfentreprisedemolily. entreprise
 CREATE TABLE IF NOT EXISTS `entreprise` (
@@ -55,13 +48,12 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
   `cp` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ville` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table sfentreprisedemolily.entreprise : ~3 rows (environ)
+-- Listage des données de la table sfentreprisedemolily.entreprise : ~0 rows (environ)
 REPLACE INTO `entreprise` (`id`, `raison_sociale`, `date_creation`, `adresse`, `cp`, `ville`) VALUES
-	(1, 'ELAN FORMATION', '1993-07-10 11:00:33', '14 rue du Rhone', '67000', 'Strasbourg'),
-	(2, 'COACTIS', '2015-01-14 11:01:12', '10 rue de la Charmille', '67200', 'Strasbourg'),
-	(3, 'ENTREPRISE', '2008-01-14 11:01:42', '1 rue Principale', '68000', 'Colmar');
+	(1, 'ELAN FORMATION', '2007-01-14 14:25:18', '14 rue du rhone', '67100', 'Strasbourg'),
+	(2, 'ENTREPRISE 1', '2015-01-14 14:25:43', '1 rue principale', '68000', 'Colmar');
 
 -- Listage de la structure de table sfentreprisedemolily. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
